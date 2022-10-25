@@ -11,9 +11,14 @@
     <div class="input">
         <input type="text" class="input-color" id="inputValue">
         <div class="btns">
-            <button class="enter" onclick="changeColors()">Enter</button>
+            <button class="enter" onclick="changeColors(document.querySelector('.input-color').value)">Enter</button>
             <button class="clear" onclick="clearInput()">Clear</button>
         </div>
+        <span class="info">
+            Enter link with a color palettes from
+            <a href="https://coolors.co/palettes/trending">Coolor</a>
+        </span>
+        <span style="color: white;">For example: <i>https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25</i></span>
     </div>
     <script src="app.js"></script>
   </body>

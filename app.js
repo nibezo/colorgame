@@ -1,6 +1,6 @@
 const board = document.querySelector('#board')
 let colors = ['#FBF8CC', '#FDE4CF', '#FFCFD2', '#F1C0E8', '#CFBAF0', '#A3C4F3', '#8EECF5', '#98F5E1', '#B9FBC0']
-const SQUARES_NUMBER = 400
+const SQUARES_NUMBER = 240
 
 document.addEventListener('keydown', event => {
     if (event.key === 'Enter') {
@@ -35,22 +35,25 @@ function getRandomColor() {
 }
 
 function changeColors(link) {
-    colors = []
-    link = link.slice(27, link.length)
-    let colorsCount = 1
-    for (let i = 0; i < link.length; i++) {
-        if (link[i] === '-') {
-            colorsCount++
+    if (link.slice(0, 27) === 'https://coolors.co/palette/') {
+        colors = []
+        link = link.slice(27, link.length)
+        let colorsCount = 1
+        for (let i = 0; i < link.length; i++) {
+            if (link[i] === '-') {
+                colorsCount++
+            }
         }
-    }
-
-    for (let i = 0; i < colorsCount; i++) {
-        link = link.replace('-', '')
-    }
     
-    for (let i = 0; i < colorsCount; i++) {
-        colors.push(`#${link.slice(0, 6)}`)
-        link = link.slice(6, link.length)
+        for (let i = 0; i < colorsCount; i++) {
+            link = link.replace('-', '')
+        }
+        
+        for (let i = 0; i < colorsCount; i++) {
+            colors.push(`#${link.slice(0, 6)}`)
+            link = link.slice(6, link.length)
+        }
+        clearInput()
     }
 }
 
